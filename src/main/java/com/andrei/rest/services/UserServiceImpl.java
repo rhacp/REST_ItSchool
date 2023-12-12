@@ -1,5 +1,6 @@
 package com.andrei.rest.services;
 
+import com.andrei.rest.exceptions.UserCreateException;
 import com.andrei.rest.models.dtos.UserDTO;
 import com.andrei.rest.models.entities.User;
 import com.andrei.rest.repositories.UserRepository;
@@ -23,7 +24,7 @@ public class UserServiceImpl implements UserService {
 
         //validation
         if (userDTO.getFirstName().length() < 3) {
-            throw new IllegalArgumentException("Invalid first name.");
+            throw new UserCreateException("Invalid first name.");
         }
 
         //conversion to entity
